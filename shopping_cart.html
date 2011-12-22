@@ -19,7 +19,7 @@
 
     <!-- HTML template for every LineItem in the shopping cart -->
     <script type="text/html" id="itemTemplate"> 
-      <div class="product ui-state-default" data-bind='attr: { product_id: product.id}'>
+      <div class="cart_product ui-state-default" data-bind='attr: { product_id: product.id}'>
         <span data-bind='text: product.description + " - $" + product.price'/>
         <span data-bind='
           afterUpdate: function(elem){ highlightUpdate(elem); },
