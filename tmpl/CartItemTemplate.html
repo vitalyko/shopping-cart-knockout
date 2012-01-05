@@ -1,0 +1,11 @@
+<!-- layout and GUI control for a single item in the cart -->
+<div class="product cart_item ui-state-default" product_id="dummy">
+  <!-- product information -->
+  <div style='display:inline;' data-bind='text: product.description + " - $" + product.price'/>
+  (<div style='display:inline;' data-bind='
+    afterUpdate: function(elem){ $parent.highlightUpdate(elem); },
+    text: quantity()'/>)
+  <!-- Need controls to de/increment quantity -->
+  <a href="#" data-bind="click: function() {$parent.shoppingCart.increment(this);}">+</a>
+  <a href="#" data-bind="click: function() {$parent.shoppingCart.decrement(this);}">-</a>
+</div>

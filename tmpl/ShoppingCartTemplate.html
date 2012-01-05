@@ -1,0 +1,21 @@
+<!-- Shopping cart contains a frame around the list of items -->
+<div class="cart"
+  data-bind='template: {
+      name: "CartItemTemplate",
+      foreach: shoppingCart.items(),
+      beforeRemove: removeCartItemVisualEffect
+    },
+    afterCreate: makeDroppable,
+    css: { empty_cart: isEmpty() }'>
+</div>
+<!-- Also need a total amount -->
+<p>Total:
+  <span data-bind="
+    afterUpdate: highlightUpdate,
+    text: '$' + shoppingCart.total()">
+  </span>
+</p>
+<!-- need a button to empty the cart -->
+<button
+ data-bind='click: dumpCart,
+ afterCreate: function(elem){ $(elem).button(); }'>Dump the cart!</button>

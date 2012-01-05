@@ -1,0 +1,6 @@
+<!-- Product list is  a simple frame around the list of product divs -->
+<div class="product_list" data-bind='template: {
+  name: "ProductTemplate",
+  foreach: productList.items,
+  afterRender: makeDraggable}'>
+</div>

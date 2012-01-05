@@ -1,0 +1,15 @@
+.product_list {
+  border: 4px solid #CCCCCC;
+  display: inline-block;
+  width: 80%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.product {
+  border: 4px solid #CCCCCC;
+  float: left;
+  margin: 15px;
+  padding: 10px;
+  cursor: pointer;
+}

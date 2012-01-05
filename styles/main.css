@@ -1,0 +1,17 @@
+body {
+	font-family: sans-serif;
+	color: #666666;
+	padding: 40px;
+	font-size:87.5%;
+	line-height:1.5;
+}
+/* Trying to create two columns on the page, without tables */
+.product_wrapper_column {
+  width: 50%;
+  float: left;
+}
+
+.cart_wrapper_column {
+  width: 50%;
+  float: right;
+}

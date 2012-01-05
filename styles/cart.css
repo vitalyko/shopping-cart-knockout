@@ -1,0 +1,17 @@
+.cart_item {
+  cursor: auto;
+}
+
+.cart {
+  border: 4px solid #CCCCCC;
+  display: inline-block;
+  margin: 0px;
+  padding: 0px;
+  width: 80%;
+}
+
+/* empty cart needs to stay large even without any items in it */
+.empty_cart {
+  padding: 40px;
+}
+

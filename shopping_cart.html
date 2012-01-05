@@ -1,57 +1,32 @@
 <html>
-<head>
-    <link type="text/css" href="http://fonts.googleapis.com/css?family=Muli" rel="stylesheet" />
-    <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/cupertino/jquery-ui.css" rel="stylesheet" />
-    <link type="text/css" href="styles/shopping_cart.css" rel="stylesheet" />
-    
-    <script src="lib/jquery-1.4.2.min.js"></script>
-    <script src="lib/jquery.tmpl.js"></script>
-    <script src="lib/knockout-1.2.1.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.js"></script>
-    <script src="src/DataModel.js"></script>
-    <script src="src/View.js"></script>
-</head>
-<body>
-    <!-- HTML template for every product item -->
-    <script type="text/html" id="productTemplate"> 
-      <div class="product ui-state-default" data-bind='attr: { product_id: id}'><span data-bind='text: description'/>&nbsp;-&nbsp;<span data-bind='text: "$" + price'/></div>
-    </script>
-
-    <!-- HTML template for every LineItem in the shopping cart -->
-    <script type="text/html" id="itemTemplate"> 
-      <div class="cart_product ui-state-default" data-bind='attr: { product_id: product.id}'>
-        <span data-bind='text: product.description + " - $" + product.price'/>
-        <span data-bind='
-          afterUpdate: function(elem){ highlightUpdate(elem); },
-          text: "(" + quantity() + ")"'/>
-        <a href="#" data-bind="click: function() { dataModel.shoppingCart.increment(this); }">+</a>
-        <a href="#" data-bind="click: function() { dataModel.shoppingCart.decrement(this); }">-</a>
+  <head>
+      <script data-main="scripts/main" src="lib/require-1.0.2.js"></script>
+  </head>
+  <body>
+      <!-- Main page
+        Left column contains two product lists
+        Right column contains two shopping carts bound to the same data object
+        It is fun to watch both GUI controls being updated synchronously ;-) -->
+      <h2>Knockout.js Shopping Cart</h2>
+      <div class="product_wrapper_column">
+        <h3>Available Products</h3>
+        <div
+         data-bind='component: {name: "ProductListComponent", data: list1}'>
+        </div>
+        <h3>More Products</h3>
+        <div
+         data-bind='component: {name: "ProductListComponent", data: list2}'>
+        </div>
       </div>
-    </script>
-
-    <!-- Main page -->
-    <h2>Knockout.js Shopping Cart</h2>
-
-    <h3>Available Products</h3>
-    <div class="products" data-bind='template: {
-      name: "productTemplate",
-      foreach: productList}'>
-    </div>
-    <h3>Your Shopping Cart</h3>
-
-    <div id="cart"
-      data-bind='template: {
-        name: "itemTemplate",
-        foreach: shoppingCart.items(),
-        beforeRemove: function(elem) { removeCartItemVisualEffect(elem); }
-    }'>
-    </div>
-    <p>Total:
-      <span data-bind="
-        afterUpdate: function(elem){ highlightUpdate(elem); },
-        text: '$' + shoppingCart.total()">
-      </span>
-    </p>
-    <button id="dump">Dump the cart!</button>
-</body>
+      <div class="cart_wrapper_column">
+        <h3>Your Shopping Cart</h3>
+        <div
+          data-bind='component: {name: "ShoppingCartComponent", data: cart1}'>
+        </div>
+        <h3>Another Shopping Cart</h3>
+        <div
+          data-bind='component: {name: "ShoppingCartComponent", data: cart1}'>
+        </div>
+      </div>
+  </body>
 </html>
